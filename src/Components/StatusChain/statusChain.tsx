@@ -25,10 +25,6 @@ const StatusChain: React.FC<Props> = ({mode}) => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleSkip = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
   const handleReset = () => {
     setActiveStep(0);
   };
