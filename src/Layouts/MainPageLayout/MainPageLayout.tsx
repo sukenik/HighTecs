@@ -7,7 +7,7 @@ import './MainPageLayout.css';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
-        backgroundColor: "#FDE75F",
+        backgroundColor: '#FDE75F',
     },
     navbarItem: {
         color: 'black',

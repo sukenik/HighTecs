@@ -1,11 +1,24 @@
 import { useState } from 'react';
-import { Grid, Button } from '@material-ui/core';
-import styles from './myStyles.module.css';
-import { MainPageLayout } from './Layouts/MainPageLayout/MainPageLayout';
-import StatusChain from './Components/StatusChain/statusChain';
+import { Grid, Button, makeStyles } from '@material-ui/core';
+import styles from './LandingPage.module.css';
+import { MainPageLayout } from '../../Layouts/MainPageLayout/MainPageLayout';
+import StatusChain from '../StatusChain/statusChain';
+
+
+const useStyles = makeStyles((theme) => ({
+    button: {
+        margin: '5px',
+        backgroundColor: '#5476A0',
+        fontSize: '30px',
+        height: '89px',
+        width: '164px',
+        fontFamily: 'Segoe UI'
+    }
+}));
 
 const LandingPage = () => {
     const [tripMode, setTripMode] = useState('');
+    const classes = useStyles();
 
     const setEnteyTripMode = () => {
         setTripMode('נכנס');
@@ -22,12 +35,12 @@ const LandingPage = () => {
                     !tripMode ? 
                     <Grid container direction='column' justifyContent='center' alignContent='center' className={styles.landingPageContainer} style={{height: "100vh"}}>
                         <Grid item>
-                            <Button variant="contained" color="primary" onClick={setOutTripMode} className={styles.modeButton}>
+                            <Button variant="contained" color="primary" onClick={setOutTripMode} className={classes.button} style={{margin: "5px"}}>
                                 יוצא
                             </Button>
                         </Grid>
                         <Grid item>
-                            <Button variant="contained" color="primary" onClick={setEnteyTripMode} className={styles.modeButton}>
+                            <Button variant="contained" color="primary" onClick={setEnteyTripMode} className={classes.button} style={{margin: "5px"}}>
                                 נכנס
                             </Button>
                         </Grid>
