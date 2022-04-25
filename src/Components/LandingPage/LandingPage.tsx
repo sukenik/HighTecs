@@ -1,14 +1,28 @@
-import { useState } from "react";
-import { Grid, Button } from "@material-ui/core";
-import styles from "./myStyles.module.css";
-import { MainPageLayout } from "./Layouts/MainPageLayout/MainPageLayout";
-import StatusChain from "./Components/StatusChain/statusChain";
-import data from "./Data/data.json";
-import { Approvals } from "./Approvals/Approvals";
+import { useState } from 'react';
+import { Grid, Button, makeStyles } from '@material-ui/core';
+import styles from './LandingPage.module.css';
+import { MainPageLayout } from '../../Layouts/MainPageLayout/MainPageLayout';
+import StatusChainNew from '../StatusChainNew';
+import data from '../../Data/data.json'
+import { Approvals } from '../../Approvals/Approvals';
+
+
+const useStyles = makeStyles((theme) => ({
+    button: {
+        margin: '5px',
+        backgroundColor: '#5476A0',
+        fontSize: '30px',
+        height: '89px',
+        width: '164px',
+        fontFamily: 'Segoe UI'
+    }
+}));
 
 const LandingPage = () => {
-  const [tripMode, setTripMode] = useState("");
-  const currentUser = data.users[2];
+    const [tripMode, setTripMode] = useState('');
+    const currentUser = data.users[0];
+
+    const classes = useStyles();
 
   const setEnteyTripMode = () => {
     setTripMode("נכנס");
@@ -55,7 +69,7 @@ const LandingPage = () => {
               </Grid>
             </Grid>
           ) : (
-            <StatusChain mode={tripMode} />
+            <StatusChainNew mode={tripMode} />
           )}
         </>
       }
