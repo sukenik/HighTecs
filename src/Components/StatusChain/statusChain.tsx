@@ -15,6 +15,7 @@ interface Props {
 
 const StatusChain: React.FC<Props> = ({mode}) => {
   const [activeStep, setActiveStep] = useState<number>(0);
+  const finishMessage = 'איזה יופי\nסיימתם עם הטופס טיולים\n';
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -46,7 +47,7 @@ const StatusChain: React.FC<Props> = ({mode}) => {
       {activeStep === steps.length ? (
         <React.Fragment>
           <Typography sx={{ mt: 2, mb: 1 }}>
-            All steps completed - you&apos;re finished
+            {mode === 'יוצא' ? `נותר לכם רק לגזור את החוגר ${finishMessage}` : `${finishMessage} ברוכים הבאים ליחידה החדשה`}
           </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Box sx={{ flex: '1 1 auto' }} />
