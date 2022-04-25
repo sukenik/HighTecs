@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Grid, Button } from '@material-ui/core';
 import styles from './myStyles.module.css';
 import { MainPageLayout } from './Layouts/MainPageLayout/MainPageLayout';
-import StatusChain from './Components/StatusChain/statusChain';
+import StatusChainNew from './Components/StatusChainNew';
 
 const LandingPage = () => {
     const [tripMode, setTripMode] = useState('');
@@ -33,7 +33,7 @@ const LandingPage = () => {
                         </Grid>
                     </Grid>
                     :
-                    <StatusChain mode={tripMode}/>
+                    <StatusChainNew mode={tripMode}/>
                 }
             </>
     }/>);
