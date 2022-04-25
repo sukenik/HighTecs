@@ -1,10 +1,9 @@
 import './App.css';
-import { MainPageLayout } from './Layouts/MainPageLayout/MainPageLayout';
-import { MainPage } from './Pages/MainPage';
+import LandingPage from './LandingPage';
 
 function App() {
   return (
-    <MainPage />
+    <LandingPage />
   );
 }
 
