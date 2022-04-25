@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Grid, Button } from '@material-ui/core';
 import styles from './myStyles.module.css';
+import { MainPageLayout } from './Layouts/MainPageLayout/MainPageLayout';
 
-const LanndingPage = () => {
+const LandingPage = () => {
     const [tripMode, setTripMode] = useState('');
 
     const setEnteyTripMode = () => {
@@ -14,6 +15,7 @@ const LanndingPage = () => {
     }
 
     return (
+        <MainPageLayout children={
         <>
             {
                 // !tripMode ? 
@@ -32,7 +34,8 @@ const LanndingPage = () => {
                 // :
                 // <StatusChain mode={tripMode}/>
             }
-        </>);   
+        </>
+    }/>);
 }
 
-export default LanndingPage;
+export default LandingPage;
