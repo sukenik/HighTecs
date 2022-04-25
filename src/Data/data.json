@@ -3,27 +3,31 @@
         {
             "fullName": "ישראל ישראלי",
             "id": "0",
-            "role": "חייל"
+            "approves": []
         },
         {
             "fullName": "הוא אפסנאי",
             "id": "1",
-            "role": "לוגיסטיקה"
+            "role": "לוגיסטיקה",
+            "approves": []
         },
         {
             "fullName": "הוא שליש",
             "id": "2",
-            "role": "שלישות"
+            "role": "שלישות",
+            "approves": []
         },
         {
             "fullName": "היא משקית",
             "id": "3",
-            "role": "ת\"ש"
+            "role": "ת\"ש",
+            "approves": []
         },
         {
             "fullName": "סלביק וולנר",
             "id": "4",
-            "role": "רס\"ר"
+            "role": "רס\"ר",
+            "approves": []
         }
 
     ]
