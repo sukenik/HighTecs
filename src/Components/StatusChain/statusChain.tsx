@@ -5,30 +5,19 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import './StatusChain.css';
 
-const goingOutSteps = ['לוגיסטיקה', 'ת"ש', 'שלישות', 'רפואה', 'רס"ר'];
+const steps = ['לוגיסטיקה', 'ת"ש', 'שלישות', 'רפואה', 'רס"ר'];
 
-const StatusChain: React.FC = () => {
+interface Props {
+  mode: string
+};
+
+const StatusChain: React.FC<Props> = ({mode}) => {
   const [activeStep, setActiveStep] = useState<number>(0);
-  const [skipped, setSkipped] = useState(new Set<number>());
-
-  const isStepOptional = (step: number) => {
-    return step === 1;
-  };
-
-  const isStepSkipped = (step: number) => {
-    return skipped.has(step);
-  };
 
   const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
-    }
-
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
   };
 
   const handleBack = () => {
@@ -36,16 +25,7 @@ const StatusChain: React.FC = () => {
   };
 
   const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
-      throw new Error("You can't skip a step that isn't optional.");
-    }
-
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped((prevSkipped) => {
-      const newSkipped = new Set(prevSkipped.values());
-      newSkipped.add(activeStep);
-      return newSkipped;
-    });
   };
 
   const handleReset = () => {
@@ -53,21 +33,13 @@ const StatusChain: React.FC = () => {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%' }} className="status-chain">
       <Stepper activeStep={activeStep}>
-        {goingOutSteps.map((label, index) => {
+        {steps.map((label, index) => {
           const stepProps: { completed?: boolean } = {};
           const labelProps: {
             optional?: React.ReactNode;
           } = {};
-          if (isStepOptional(index)) {
-            labelProps.optional = (
-              <Typography variant="caption">Optional</Typography>
-            );
-          }
-          if (isStepSkipped(index)) {
-            stepProps.completed = false;
-          }
           return (
             <Step key={label} {...stepProps}>
               <StepLabel {...labelProps}>{label}</StepLabel>
@@ -75,7 +47,7 @@ const StatusChain: React.FC = () => {
           );
         })}
       </Stepper>
-      {activeStep === goingOutSteps.length ? (
+      {activeStep === steps.length ? (
         <React.Fragment>
           <Typography sx={{ mt: 2, mb: 1 }}>
             All steps completed - you&apos;re finished
@@ -86,8 +58,8 @@ const StatusChain: React.FC = () => {
           </Box>
         </React.Fragment>
       ) : (
-        <React.Fragment>
-          <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
+      <React.Fragment>
+        <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Button
               color="inherit"
@@ -98,13 +70,8 @@ const StatusChain: React.FC = () => {
               Back
             </Button>
             <Box sx={{ flex: '1 1 auto' }} />
-            {isStepOptional(activeStep) && (
-              <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                Skip
-              </Button>
-            )}
             <Button onClick={handleNext}>
-              {activeStep === goingOutSteps.length - 1 ? 'Finish' : 'Next'}
+              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
             </Button>
           </Box>
         </React.Fragment>
