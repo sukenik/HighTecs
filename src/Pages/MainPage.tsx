@@ -1,8 +1,8 @@
-import StatusChain from "../Components/statusChain";
+import StatusChain from "../Components/StatusChain/statusChain";
 import { MainPageLayout } from "../Layouts/MainPageLayout/MainPageLayout";
 
 export const MainPage = () => {
     return (
-        <MainPageLayout children={<StatusChain />} />
+        <></>
     );
 };
