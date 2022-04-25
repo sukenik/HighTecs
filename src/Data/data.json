@@ -1,0 +1,34 @@
+{
+    "users": [
+        {
+            "fullName": "ישראל ישראלי",
+            "id": "0",
+            "approves": []
+        },
+        {
+            "fullName": "הוא אפסנאי",
+            "id": "1",
+            "role": "לוגיסטיקה",
+            "approves": []
+        },
+        {
+            "fullName": "הוא שליש",
+            "id": "2",
+            "role": "שלישות",
+            "approves": []
+        },
+        {
+            "fullName": "היא משקית",
+            "id": "3",
+            "role": "ת\"ש",
+            "approves": []
+        },
+        {
+            "fullName": "סלביק וולנר",
+            "id": "4",
+            "role": "רס\"ר",
+            "approves": []
+        }
+
+    ]
+}
