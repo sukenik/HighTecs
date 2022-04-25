@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     },
     divider: {
         width: '100px',
+    },
+    infoItem: {
+        border: '5px solid black',
     }
 }));
 
@@ -29,10 +32,10 @@ const StatusChainNew = (props: StatusChainNewProps) => {
     const { mode } = props;
     const classes = useStyles();
 
-    const [isShowStatusText, setIsShowStatusText] = useState(false);
+    const [clickedItem, setClickedItem] = useState<number>();
 
-    const onStatusClick = () => {
-        setIsShowStatusText(prevstate => !prevstate);
+    const onStatusClick = (index: number) => {
+        setClickedItem(index);
     }
 
     return (
@@ -50,10 +53,12 @@ const StatusChainNew = (props: StatusChainNewProps) => {
                         return (
                             <>
                                 <Grid item>
-                                    <Button onClick={onStatusClick} className={clsx(classes.statusButton,
+                                    <Button onClick={() => onStatusClick(index)} className={clsx(classes.statusButton,
                                         {
                                             [classes.declineStatus]: stepsStatus[index] === 'אושר',
-                                            [classes.completedStatus]: stepsStatus[index] === 'נדחה'
+                                            [classes.completedStatus]: stepsStatus[index] === 'נדחה',
+                                            [classes.infoItem]: clickedItem === index,
+
                                         })}>
                                         {step}
                                     </Button>
@@ -69,7 +74,7 @@ const StatusChainNew = (props: StatusChainNewProps) => {
                 }
             </Grid>
             {
-                isShowStatusText &&
+                clickedItem &&
                 <Grid container justifyContent="center">
                     <Grid item>
                         <Box>

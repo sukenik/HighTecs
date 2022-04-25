@@ -2,7 +2,7 @@ import { AppBar, Button, Grid, IconButton, Toolbar, Typography } from "@material
 import React, { ReactNode } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { Notifications } from '@material-ui/icons';
-import mainPicture from '../../Assets/hiking-istock1_C.jpg';
+import mainPicture from '../../Assets/globus.jpeg';
 import './MainPageLayout.css';
 
 const useStyles = makeStyles((theme) => ({
