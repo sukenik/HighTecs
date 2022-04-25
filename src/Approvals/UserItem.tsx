@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Collapse, styled, Typography, Checkbox, Button } from "@mui/material";
+import { Collapse, styled, Typography, Button } from "@mui/material";
 import { KeyboardArrowDown } from "@mui/icons-material";
+import { LoremIpsum } from "lorem-ipsum";
+import { isVisible } from "@testing-library/user-event/dist/utils";
 
 interface iProps {
   id: string;
@@ -24,7 +26,7 @@ const UserBox = styled("div")((props: { isOpen: boolean }) => ({
   textAlign: "start",
   padding: "15px",
   margin: props.isOpen ? "5px 0 0 0" : "5px 0",
-  borderRadius: props.isOpen ? '5px 5px 0 0' : '5px'
+  borderRadius: props.isOpen ? "5px 5px 0 0" : "5px",
 }));
 
 const ApprovalButton = styled(Button)({
@@ -36,41 +38,70 @@ const ApprovalButton = styled(Button)({
   },
 });
 
-export const UserItem: React.FC<iProps> = ({ fullName, id }: iProps) => {
+export const UserItem: React.FC<iProps> = ({
+  fullName,
+  id,
+}: iProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(true);
+  const lorem = new LoremIpsum({
+    sentencesPerParagraph: {
+      max: 16,
+      min: 6,
+    },
+    wordsPerSentence: {
+      max: 16,
+      min: 9,
+    },
+  });
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleDecline = () => setIsVisible(false);
+
+  const handleAccept = () => setIsVisible(false);
+
   return (
-    <div style={{ width: "600px" }}>
-      <UserBox isOpen={isOpen}>
-        <DropDownArrow isOpen={isOpen} onClick={handleClick} />
-        <Typography style={{ width: "30%", textOverflow: "ellipsis" }}>
-          {fullName}
-        </Typography>
-        <Typography style={{ width: "10%", textOverflow: "ellipsis" }}>
-          {id}
-        </Typography>
-        <ApprovalButton variant={"contained"}>אישור</ApprovalButton>
-        <ApprovalButton
-          variant={"contained"}
-          style={{ backgroundColor: "red" }}
-        >
-          סירוב
-        </ApprovalButton>
-      </UserBox>
-      <Collapse in={isOpen}>
-        <div
-          style={{
-            backgroundColor: "#B2D0F7",
-            height: "110px",
-            width: "-webkit-fill-available",
-            borderRadius: ' 0 0 5px 5px'
-          }}
-        ></div>
-      </Collapse>
-    </div>
+    <>
+      {
+          isVisible &&
+        <div style={{ width: "600px" }}>
+          <UserBox isOpen={isOpen}>
+            <DropDownArrow isOpen={isOpen} onClick={handleClick} />
+            <Typography style={{ width: "30%", textOverflow: "ellipsis" }}>
+              {fullName}
+            </Typography>
+            <Typography style={{ width: "10%", textOverflow: "ellipsis" }}>
+              {id}
+            </Typography>
+            <ApprovalButton variant={"contained"} onClick={handleAccept}>
+              אישור
+            </ApprovalButton>
+            <ApprovalButton
+              variant={"contained"}
+              style={{ backgroundColor: "red" }}
+              onClick={handleDecline}
+            >
+              סירוב
+            </ApprovalButton>
+          </UserBox>
+          <Collapse in={isOpen}>
+            <div
+              style={{
+                backgroundColor: "#B2D0F7",
+                height: "110px",
+                width: "-webkit-fill-available",
+                borderRadius: " 0 0 5px 5px",
+                padding: "10px",
+              }}
+            >
+              {lorem.generateSentences(3)}
+            </div>
+          </Collapse>
+        </div>
+      }
+    </>
   );
 };
