@@ -12,7 +12,7 @@ header {
 }
 img {
     width: 100vw;
-    height: 20%;
+    height: 35%;
     align-self: center;
 }
 @media only screen and (max-width: 600px) {

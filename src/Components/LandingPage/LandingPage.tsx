@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LandingPage = () => {
     const [tripMode, setTripMode] = useState('');
-    const currentUser = data.users[1];
+    const currentUser = data.users[2];
 
     const classes = useStyles();
 

@@ -6,7 +6,7 @@
             "approves": []
         },
         {
-            "fullName": "הוא אפסנאי",
+            "fullName": "תומר גראבסקי",
             "id": "1",
             "role": "לוגיסטיקה",
             "approves": []
@@ -22,13 +22,6 @@
             "id": "3",
             "role": "ת\"ש",
             "approves": []
-        },
-        {
-            "fullName": "סלביק וולנר",
-            "id": "4",
-            "role": "רס\"ר",
-            "approves": []
         }
-
     ]
 }

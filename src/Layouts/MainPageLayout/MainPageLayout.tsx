@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Notifications } from '@material-ui/icons';
 import mainPicture from '../../Assets/globus.jpeg';
 import './MainPageLayout.css';
+import data from '../../Data/data.json';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -32,7 +33,7 @@ export const MainPageLayout = (props: MainPageLayoutProps) => {
                         </Grid>
                         <Grid item>
                             <Typography className={classes.navbarItem}>
-                                שם משתמש
+                                {data.users[1].fullName}
                             </Typography>
                         </Grid>
                     </Grid>
